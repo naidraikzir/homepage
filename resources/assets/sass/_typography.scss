@@ -1,0 +1,69 @@
+
+html {
+	font: normal 400 16px/1.5 $sans;
+
+	@include breakpoint("sm") {
+		font-size: 18px;
+	}
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+}
+
+h6 {
+	font-size: 0.7em;
+}
+
+blockquote {
+	font: {
+		size: 1.5em;
+		style: italic;
+	};
+}
+
+pre {
+	font-size: 0.8em;
+}
+
+figcaption {
+	font-style: italic;
+}
+
+a {
+	text-decoration: none;
+}
+
+q {
+	letter-spacing: 1px;
+}
+
+code {
+	font-size: 1em;
+}
+
+input:not([type=checkbox]):not([type=radio]),
+textarea,
+select,
+button {
+	font: {
+		family: $sans;
+		size: 0.8em;
+		weight: bold;
+	}
+	line-height: 1;
+}
+
+button {
+	text-transform: uppercase;
+}
+
+th {
+	text-transform: capitalize;
+}
+
+pre,
+code {
+	font-family: $mono;
+	letter-spacing: 0.5px;
+}
