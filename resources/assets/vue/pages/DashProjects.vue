@@ -1,9 +1,10 @@
 <template lang="pug">
-h1 Apalah
+article
+	.h2 Projects
 </template>
 
 <script>
 export default {
-	
+
 }
 </script>

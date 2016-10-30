@@ -1,9 +1,9 @@
 
 html {
-	font: normal 400 16px/1.5 $sans;
+	font: normal 400 14px/1.5 $mono;
 
-	@include breakpoint("sm") {
-		font-size: 18px;
+	@include breakpoint('md') {
+		font-size: 16px;
 	}
 }
 
@@ -11,35 +11,33 @@ body {
 	-webkit-font-smoothing: antialiased;
 }
 
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+}
+
 h6 {
 	font-size: 0.7em;
 }
 
 blockquote {
-	font: {
-		size: 1.5em;
-		style: italic;
-	};
+	font-size: 0.95em;
+	text-transform: uppercase;
 }
 
 pre {
-	font-size: 0.8em;
+	font-size: 0.95em;
 }
 
 figcaption {
 	font-style: italic;
 }
 
-a {
-	text-decoration: none;
-}
-
-q {
-	letter-spacing: 1px;
+p {
+	line-height: 1.8;
 }
 
 code {
-	font-size: 1em;
+	font-size: 0.95em;
 }
 
 input:not([type=checkbox]):not([type=radio]),
@@ -47,9 +45,8 @@ textarea,
 select,
 button {
 	font: {
-		family: $sans;
-		size: 0.8em;
-		weight: bold;
+		family: $mono;
+		size: 0.95em;
 	}
 	line-height: 1;
 }
@@ -65,5 +62,4 @@ th {
 pre,
 code {
 	font-family: $mono;
-	letter-spacing: 0.5px;
 }

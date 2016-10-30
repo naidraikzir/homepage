@@ -1,5 +1,7 @@
 // Vendors
 @import '~normalize.css';
+@import '~colors.css/css/colors';
+@import '~basscss/css/basscss';
 
 // Variables
 @import
@@ -10,3 +12,8 @@
 	'fonts',
 	'typography',
 	'base';
+
+@import
+	'transitions',
+	'shadows',
+	'components';

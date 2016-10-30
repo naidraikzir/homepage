@@ -1,7 +1,7 @@
-var webpack = require('webpack')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
+import webpack from 'webpack'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
-module.exports = {
+const config = {
 	entry: __dirname + '/resources/assets/js/app.js',
 	output: {
 		path: __dirname + '/public',
@@ -24,8 +24,8 @@ module.exports = {
 		]
 	},
 	resolve: {
-		extensions: ['.js', '.vue', '.scss'],
-		modules: [ __dirname + '/resources/assets/', 'node_modules' ]
+		extensions: [ '.js', '.vue', '.scss' ],
+		modules: [ 'node_modules', __dirname + '/resources/assets/' ]
 	},
 	plugins: [
 		new ExtractTextPlugin('css/app.css'),
@@ -36,9 +36,9 @@ module.exports = {
 }
 
 if (process.env.NODE_ENV === 'production') {
-	module.exports.devtool = '#cheap-module-source-map'
-	module.exports.output.publicPath = '/'
-	module.exports.module.loaders = (module.exports.module.loaders || []).concat([
+	config.devtool = '#cheap-module-source-map'
+	config.output.publicPath = '/'
+	config.module.loaders = (config.module.loaders || []).concat([
 		{
 			test: /\.scss$/,
 			loader: ExtractTextPlugin.extract({
@@ -48,7 +48,7 @@ if (process.env.NODE_ENV === 'production') {
 		}
 	])
 	// http://vue-loader.vuejs.org/en/workflow/production.html
-	module.exports.plugins = (module.exports.plugins || []).concat([
+	config.plugins = (config.plugins || []).concat([
 		new webpack.DefinePlugin({
 			'process.env': {
 				NODE_ENV: '"production"'
@@ -68,8 +68,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 // process.env.NODE_ENV === 'development'
 else {
-	module.exports.devtool = '#cheap-module-eval-source-map'
-	module.exports.module.loaders = (module.exports.module.loaders || []).concat([
+	config.devtool = '#cheap-module-eval-source-map'
+	config.module.loaders = (config.module.loaders || []).concat([
 		{
 			test: /\.scss$/,
 			loader: ExtractTextPlugin.extract({
@@ -79,3 +79,5 @@ else {
 		}
 	])
 }
+
+export default config
