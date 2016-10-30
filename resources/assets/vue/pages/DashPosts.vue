@@ -1,6 +1,7 @@
 <template lang="pug">
-article
-	.h2 Posts
+section
+	article
+		.h2 Posts
 </template>
 
 <script>

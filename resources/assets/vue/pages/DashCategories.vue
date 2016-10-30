@@ -1,6 +1,7 @@
 <template lang="pug">
-article
-	.h2 Categories
+section
+	article
+		.h2 Categories
 </template>
 
 <script>
