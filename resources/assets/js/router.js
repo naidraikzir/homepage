@@ -18,7 +18,7 @@ const router = new Router({
 	mode: 'history',
 	routes: [
 		{ path: '/', name: 'home', component: Home },
-		{ path: '/asup', name: 'login', component: Login },
+		{ path: '/login', name: 'login', component: Login },
 		{
 			path: '/dashboard',
 			name: 'dashboard',
@@ -43,6 +43,10 @@ router.beforeEach((to, from, next) => {
 		next({ name: 'home' })
 	else
 		next()
+})
+
+router.afterEach((to, from) => {
+	if (to.matched.some(route => route.name == 'dashboard')) store.dispatch('toggleMenu', false)
 })
 
 export default router

@@ -10,6 +10,10 @@
 	width: 100%;
 	z-index: 2;
 
+	&.hidden {
+		transform: translateY(100%);
+	}
+
 	&.pulled-up {
 		transform: translateY(-42.95px);
 	}
@@ -33,28 +37,37 @@
 }
 
 .dash-menu {
-	align-items: center;
-	background-color: black;
-	bottom: 0;
-	display: flex;
-	height: 42.95px;
-	left: 0;
+	display: none;
 	overflow-x: auto;
-	position: fixed;
-	white-space: nowrap;
-	width: 100%;
+
+	.dash-nav & {
+		background-color: black;
+		bottom: initial;
+		display: flex;
+		position: absolute;
+		top: 100%;
+		width: 100%;
+	}
 
 	@include breakpoint('md') {
 		align-items: flex-end;
 		background-color: white;
+		bottom: 0;
+		display: flex;
 		flex-direction: column;
 		height: auto;
 		justify-content: flex-start;
+		left: 0;
 		margin-top: 50px;
 		padding: 1em;
+		position: fixed;
 		top: 0;
 		width: 180px;
 		z-index: 2;
+
+		.dash-nav & {
+			display: none;
+		}
 	}
 
 	.menu-item {
