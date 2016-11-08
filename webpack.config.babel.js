@@ -1,5 +1,6 @@
 import webpack from 'webpack'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 
 const config = {
 	entry: __dirname + '/resources/assets/js/app.js',
@@ -63,7 +64,10 @@ if (process.env.NODE_ENV === 'production') {
 			}
 		}),
 		new webpack.optimize.OccurrenceOrderPlugin(),
-		new webpack.optimize.DedupePlugin()
+		new webpack.optimize.DedupePlugin(),
+		new BundleAnalyzerPlugin({
+			generateStatsFile: true
+		})
 	])
 }
 // process.env.NODE_ENV === 'development'

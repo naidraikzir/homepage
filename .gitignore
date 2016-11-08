@@ -4,6 +4,7 @@
 /public/images
 /public/js
 /public/storage
+/public/stats.json
 /vendor
 /.idea
 Homestead.json

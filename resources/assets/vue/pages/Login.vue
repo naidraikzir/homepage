@@ -27,7 +27,7 @@ export default {
 	},
 
 	beforeRouteEnter (to, from, next) {
-		next(vm => vm.isAuthenticated ? next({ name: 'dash-main' }) : true)
+		next(vm => vm.isAuthenticated ? { name: 'dash-main' } : true)
 	},
 
 	methods: {

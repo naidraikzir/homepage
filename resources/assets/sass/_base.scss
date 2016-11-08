@@ -4,11 +4,11 @@
 }
 
 html {
+	color: $darkgrey;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 body {
-	background-color: whitesmoke;
 	overflow-x: hidden;
 }
 
@@ -21,11 +21,13 @@ article {
 }
 
 p {
+	margin-bottom: 2em;
+	margin-top: 2em;
 	max-width: 42em;
 }
 
 blockquote {
-	margin-left: 0.6em;
+	margin: 2em 0 2em 0.6em;
 	transition: 0.2s ease;
 	&:hover {
 		transform: translateX(0.6em);
@@ -55,7 +57,7 @@ td {
 
 table {
 	border-spacing: 0;
-	margin: 1em 0;
+	margin: 1.4em 0;
 	max-width: 100%;
 	@include breakpoint("md") {
 		display: table;
@@ -87,7 +89,7 @@ tr {
 }
 
 pre {
-	background-color: black;
+	background-color: $darkgrey;
 	color: white;
 	overflow-x: auto;
 	padding: 1em;
@@ -99,7 +101,7 @@ form {
 
 fieldset {
 	border: 0;
-	margin: 0.6em 0;
+	margin: 1em 0;
 	padding: 0;
 }
 
@@ -114,7 +116,7 @@ figcaption {
 
 // inlines
 a {
-	color: black;
+	color: $darkgrey;
 	cursor: pointer;
 }
 
@@ -124,7 +126,7 @@ q {
 }
 
 code {
-	background-color: black;
+	background-color: $darkgrey;
 	color: white;
 	display: inline-block;
 	padding-left: 0.3em;
@@ -199,7 +201,7 @@ select:-moz-focusring {
 }
 
 button {
-	background-color: black;
+	background-color: $darkgrey;
 	color: white;
 	border: none;
 	margin-bottom: 0.8em;
@@ -213,7 +215,7 @@ button {
 		transform: translateY(0.1em);
 
 		&::before {
-			box-shadow: 0 0 1em 0 rgba(black, 0.75);
+			box-shadow: 0 0 0.6em 0 rgba($darkgrey, 0.75);
 		}
 	}
 
@@ -221,17 +223,17 @@ button {
 		transform: translateY(0.2em);
 	
 		&::before {
-			box-shadow: 0 0 0.5em 0 rgba(black, 0.5);
+			box-shadow: 0 0 0.4em 0 rgba($darkgrey, 0.5);
 		}
 	}
 
 	&::before {
-		box-shadow: 0 0.1em 1.2em 0 rgba(black, 0.75);
+		box-shadow: 0 0.2em 0.8em 0 rgba($darkgrey, 0.5);
 		content: '';
-		height: 90%;
+		height: 80%;
 		left: 5%;
 		position: absolute;
-		top: 10%;
+		top: 20%;
 		transition: 0.2s;
 		width: 90%;
 	}
@@ -259,7 +261,7 @@ img {
 }
 
 mark {
-	background-color: black;
+	background-color: $darkgrey;
 	color: white;
 }
 
