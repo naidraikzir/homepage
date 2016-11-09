@@ -1,6 +1,6 @@
 
 html {
-	font: normal 400 14px/1.5 $mono;
+	font: normal 400 14px/1.5 $sans;
 	-webkit-font-smoothing: antialiased;
 
 	@include breakpoint('md') {
@@ -42,13 +42,14 @@ textarea,
 select,
 button {
 	font: {
-		family: $mono;
+		family: $sans;
 		size: 0.95em;
 	}
 	line-height: 1;
 }
 
 button {
+	font-size: 0.85em;
 	text-transform: uppercase;
 }
 
