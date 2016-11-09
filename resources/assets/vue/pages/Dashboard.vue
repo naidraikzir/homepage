@@ -1,5 +1,5 @@
 <template lang="pug">
-div
+.dashboard
 	dash-nav
 	loading
 	.dash-main(@click="toggleMenu(false)")

@@ -2,12 +2,17 @@ import webpack from 'webpack'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 
-const config = {
-	entry: __dirname + '/resources/assets/js/app.js',
+const PRODUCTION = process.env.NODE_ENV === 'production'
+const EXTRACT_CSS = new ExtractTextPlugin('css/app.css')
+
+const CONFIG = {
+	entry: {
+		app: __dirname + '/resources/assets/js/app.js',
+		vendor: ['vue', 'vue-resource', 'vue-router', 'vuex', 'hammerjs']
+	},
 	output: {
 		path: __dirname + '/public',
-		publicPath: 'http://localhost:8080/',
-		filename: 'js/app.js'
+		publicPath: 'http://localhost:8080/'
 	},
 	module: {
 		loaders: [
@@ -29,27 +34,30 @@ const config = {
 		modules: [ 'node_modules', __dirname + '/resources/assets/' ]
 	},
 	plugins: [
-		new ExtractTextPlugin('css/app.css'),
+		EXTRACT_CSS,
+		new webpack.optimize.CommonsChunkPlugin({
+			name: [ 'vendor', 'manifest' ]
+		})
 	],
 	devServer: {
 		historyApiFallback: true
 	}
 }
 
-if (process.env.NODE_ENV === 'production') {
-	config.devtool = '#cheap-module-source-map'
-	config.output.publicPath = '/'
-	config.module.loaders = (config.module.loaders || []).concat([
+if (PRODUCTION) {
+	CONFIG.output.filename = `js/[chunkhash].[name].js`
+	CONFIG.devtool = '#cheap-module-source-map'
+	CONFIG.output.publicPath = '/'
+	CONFIG.module.loaders = (CONFIG.module.loaders || []).concat([
 		{
 			test: /\.scss$/,
-			loader: ExtractTextPlugin.extract({
+			loader: EXTRACT_CSS.extract({
 				fallbackLoader: 'style',
-				loader: 'css!sass'
+				loader: 'css!postcss!sass'
 			})
 		}
 	])
-	// http://vue-loader.vuejs.org/en/workflow/production.html
-	config.plugins = (config.plugins || []).concat([
+	CONFIG.plugins = (CONFIG.plugins || []).concat([
 		new webpack.DefinePlugin({
 			'process.env': {
 				NODE_ENV: '"production"'
@@ -63,25 +71,24 @@ if (process.env.NODE_ENV === 'production') {
 				comments: false
 			}
 		}),
-		new webpack.optimize.OccurrenceOrderPlugin(),
 		new webpack.optimize.DedupePlugin(),
 		new BundleAnalyzerPlugin({
 			generateStatsFile: true
 		})
 	])
 }
-// process.env.NODE_ENV === 'development'
 else {
-	config.devtool = '#cheap-module-eval-source-map'
-	config.module.loaders = (config.module.loaders || []).concat([
+	CONFIG.output.filename = `js/[name].js`
+	CONFIG.devtool = '#cheap-module-eval-source-map'
+	CONFIG.module.loaders = (CONFIG.module.loaders || []).concat([
 		{
 			test: /\.scss$/,
-			loader: ExtractTextPlugin.extract({
-				fallbackLoader: 'style-loader',
-				loader: 'css-loader?sourceMap!sass-loader?sourceMap'
+			loader: EXTRACT_CSS.extract({
+				fallbackLoader: 'style',
+				loader: 'css?sourceMap!postcss?sourceMap!sass?sourceMap'
 			})
 		}
 	])
 }
 
-export default config
+export default CONFIG

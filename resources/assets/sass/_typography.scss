@@ -1,7 +1,7 @@
 
 html {
 	font: normal 400 14px/1.5 $mono;
-	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-font-smoothing: antialiased;
 
 	@include breakpoint('md') {
 		font-size: 16px;

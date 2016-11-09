@@ -1,9 +1,10 @@
 <template lang="pug">
 .dash-nav(:class="{ 'pulled-up': menu, 'hidden': hide }", v-touch:swipeup="pullUp")
-	a.h3.md-hide.lg-hide(@click.prevent.stop="toggleMenu(!menu)") &#8673;
-	transition(name="fade", mode="out-in")
-		span.h3 {{ $route.meta.text }}
-	a.h3(@click.prevent="logout") &#8618;
+	nav
+		a.h3.md-hide.lg-hide(@click.prevent.stop="toggleMenu(!menu)") &#8673;
+		transition(name="fade", mode="out-in")
+			span.h3 {{ $route.meta.text }}
+		a.h3(@click.prevent="logout") &#8618;
 	dash-menu
 </template>
 
