@@ -19,6 +19,7 @@ export default {
 				{ name: 'dash-posts', text: 'Posts' },
 				{ name: 'dash-projects', text: 'Projects' },
 				{ name: 'dash-categories', text: 'Categories' },
+				{ name: 'dash-tags', text: 'Tags' },
 			]
 		}
 	},

@@ -45,7 +45,8 @@ const CONFIG = {
 }
 
 if (PRODUCTION) {
-	CONFIG.output.filename = `js/[chunkhash].[name].js`
+	// CONFIG.output.filename = `js/[chunkhash].[name].js`
+	CONFIG.output.filename = `js/[name].js`
 	CONFIG.devtool = '#cheap-module-source-map'
 	CONFIG.output.publicPath = '/'
 	CONFIG.module.loaders = (CONFIG.module.loaders || []).concat([

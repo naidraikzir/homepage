@@ -28,7 +28,7 @@ export default {
 	},
 
 	mounted () {
-		window.onscroll = e => {
+		window.onscroll = () => {
 			if (this.scrollPos < window.scrollY && document.body.clientWidth < 832) this.hide = true
 			else this.hide = false
 			this.scrollPos = window.scrollY

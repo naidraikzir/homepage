@@ -15,7 +15,7 @@ export default {
 	methods: {
 		checkSession () {
 			this.$http.get('/auth-state').then(res => {
-				this.setAuthState(res.data == 1 ? true : false)
+				this.setAuthState(res.data === '1' ? true : false)
 			}, err => console.log(err))
 		},
 		...mapActions(['setAuthState'])

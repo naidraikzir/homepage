@@ -11,6 +11,7 @@ import DashMain from 'vue/pages/DashMain'
 import DashPosts from 'vue/pages/DashPosts'
 import DashProjects from 'vue/pages/DashProjects'
 import DashCategories from 'vue/pages/DashCategories'
+import DashTags from 'vue/pages/DashTags'
 import NotFound from 'vue/pages/NotFound'
 
 const router = new Router({
@@ -31,6 +32,7 @@ const router = new Router({
 				{ path: 'posts', name: 'dash-posts', component: DashPosts, meta: { text: 'Posts' } },
 				{ path: 'projects', name: 'dash-projects', component: DashProjects, meta: { text: 'Projects' } },
 				{ path: 'categories', name: 'dash-categories', component: DashCategories, meta: { text: 'Categories' } },
+				{ path: 'tags', name: 'dash-tags', component: DashTags, meta: { text: 'Tags' } },
 			]
 		},
 		{ path: '/404', name: '404', component: NotFound },
@@ -45,8 +47,8 @@ router.beforeEach((to, from, next) => {
 		next()
 })
 
-router.afterEach((to, from) => {
-	if (to.matched.some(route => route.name == 'dashboard')) store.dispatch('toggleMenu', false)
+router.afterEach(to => {
+	if (to.matched.some(route => route.name === 'dashboard')) store.dispatch('toggleMenu', false)
 })
 
 export default router
