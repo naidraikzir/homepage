@@ -1,5 +1,7 @@
 <template lang="pug">
 section
+	.pad
+		loading
 	article
 		h1 Heading H1
 		h1
@@ -128,7 +130,9 @@ section
 </template>
 
 <script>
+import Loading from 'vue/components/Loading'
 export default {
-	
+	name: 'Home',
+	components: { Loading }
 }
 </script>

@@ -1,5 +1,6 @@
 <template lang="pug">
 .loading
+	div
 </template>
 
 <script>

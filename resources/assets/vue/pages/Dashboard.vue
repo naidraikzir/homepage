@@ -1,9 +1,10 @@
 <template lang="pug">
 .dashboard
 	dash-nav
-	loading
 	.dash-main(@click="toggleMenu(false)")
 		dash-menu
+		.pad
+			loading
 		transition(name="to-right", mode="out-in")
 			router-view
 </template>
