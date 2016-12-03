@@ -1,0 +1,11 @@
+.landing {
+	.menu {
+		padding: 2em 2.5em;
+		text-align: right;
+
+		> .item {
+			border-bottom: 0;
+			padding-left: 1em;
+		}
+	}
+}

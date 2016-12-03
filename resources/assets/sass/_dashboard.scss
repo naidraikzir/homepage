@@ -3,17 +3,15 @@
 	background-color: lighten($purple, 10%);
 	background-image: radial-gradient(circle at top center, $pink 0%, $purple 100%);
 	background-attachment: fixed;
-	color: white;
 
 	a {
 		color: white;
 	}
 
 	pre,
-	code,
-	mark,
-	button {
+	code {
 		background-color: black;
+		color: white;
 	}
 
 	input,
@@ -29,12 +27,37 @@
 											linear-gradient(135deg, white 50%, transparent 50%);
 	}
 
+	button {
+		background-color: #46ff6e;
+
+		&:hover::before {
+			box-shadow: 0 0em 0.75em 0 rgba(#46ff6e, 0.75);
+		}
+
+		&::before {
+			box-shadow: 0 0.2em 1.5em 0 rgba(#46ff6e, 0.5);
+			content: '';
+			height: 80%;
+			left: 5%;
+			position: absolute;
+			top: 20%;
+			transition: 0.2s;
+			width: 90%;
+			z-index: -1;
+		}
+	}
+
 	tr {
 		border-top-color: white;
 	}
 
 	td {
 		border-top-color: white;
+	}
+
+	::placeholder {
+		color: rgba(255, 255, 255, 0.75);
+		font-style: italic;
 	}
 }
 
@@ -65,6 +88,7 @@
 	}
 
 	> nav > * {
+		border: none;
 		padding: 0.5em 1em;
 	}
 
@@ -105,7 +129,7 @@
 		height: auto;
 		justify-content: flex-start;
 		left: 0;
-		margin-top: 60px;
+		margin-top: 50px;
 		padding: 1em;
 		position: fixed;
 		top: 0;
@@ -117,11 +141,11 @@
 		}
 	}
 
-	.menu-item {
+	> .menu-item {
+		border: none;
 		color: white;
 		display: inline-block;
 		padding: 0.5em 0.65em;
-		text-decoration: none;
 		vertical-align: middle;
 
 		@include breakpoint('md') {
@@ -153,5 +177,17 @@
 		margin-left: 180px;
 		padding-bottom: 0;
 		padding-top: 50px;
+	}
+}
+
+.post-form {
+
+	article {
+		vertical-align: top;
+
+		@include breakpoint('lg') {
+			display: inline-block;
+			width: 50%;
+		}
 	}
 }

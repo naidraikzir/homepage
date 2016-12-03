@@ -2,30 +2,23 @@
 .dash-menu
 	router-link.menu-item(
 		v-for="menu in menus",
-		:to="{ name: menu.name}",
-		exact) {{ menu.text }}
+		:to="{ name: menu.name }") {{ menu.text }}
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-
 export default {
 	name: 'DashMenu',
 
 	data () {
 		return {
 			menus: [
-				{ name: 'dash-main', text: 'Dashboard' },
-				{ name: 'dash-posts', text: 'Posts' },
-				{ name: 'dash-projects', text: 'Projects' },
-				{ name: 'dash-categories', text: 'Categories' },
-				{ name: 'dash-tags', text: 'Tags' },
+				{ name: 'dash main', text: 'Dashboard' },
+				{ name: 'dash posts', text: 'Posts' },
+				{ name: 'dash projects', text: 'Projects' },
+				{ name: 'dash categories', text: 'Categories' },
+				{ name: 'dash tags', text: 'Tags' },
 			]
 		}
-	},
-
-	methods: {
-		...mapActions(['toggleMenu'])
 	}
 }
 </script>

@@ -1,10 +1,10 @@
 <template lang="pug">
-.dash-nav(:class="{ 'pulled-up': menu, 'hidden': hide }", v-touch:swipeup="pullUp")
+.dash-nav(:class="{ 'pulled-up': dashMenu, 'hidden': hide }", v-touch:swipeup="pullUp")
 	nav
-		a.h3.md-hide.lg-hide(@click.prevent.stop="toggleMenu(!menu)") &#8673;
+		a.h3.md-hide.lg-hide(@click.prevent.stop="toggleDashMenu(!dashMenu)") &#8673;
 		transition(name="fade", mode="out-in")
 			span.h3 {{ $route.meta.text }}
-		a.h3(@click.prevent="logout") &#8618;
+		a.h3(@click.prevent="logout") &#10157;
 	dash-menu
 </template>
 
@@ -24,7 +24,7 @@ export default {
 	},
 
 	computed: {
-		...mapGetters(['menu'])
+		...mapGetters(['dashMenu'])
 	},
 
 	mounted () {
@@ -43,9 +43,9 @@ export default {
 			}, err => console.log(err))
 		},
 		pullUp () {
-			this.toggleMenu(true)
+			this.toggleDashMenu(true)
 		},
-		...mapActions(['toggleMenu', 'setAuthState'])
+		...mapActions(['toggleDashMenu', 'setAuthState'])
 	}
 }
 </script>

@@ -1,10 +1,8 @@
 <template lang="pug">
 .dashboard
 	dash-nav
-	.dash-main(@click="toggleMenu(false)")
+	.dash-main(@click="toggleDashMenu(false)")
 		dash-menu
-		.pad
-			loading
 		transition(name="to-right", mode="out-in")
 			router-view
 </template>
@@ -13,18 +11,17 @@
 import { mapActions, mapGetters } from 'vuex'
 import DashMenu from 'vue/partials/DashMenu'
 import DashNav from 'vue/partials/DashNav'
-import Loading from 'vue/components/Loading'
 
 export default {
 	name: 'Dashboard',
-	components: { DashMenu, DashNav, Loading },
+	components: { DashMenu, DashNav },
 
 	computed: {
-		...mapGetters(['menu'])
+		...mapGetters(['menu', 'loading'])
 	},
 
 	methods: {
-		...mapActions(['toggleMenu'])
+		...mapActions(['toggleDashMenu'])
 	}
 }	
 </script>

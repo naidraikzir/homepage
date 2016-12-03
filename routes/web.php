@@ -12,6 +12,7 @@
 */
 
 Auth::routes();
+
 Route::get('auth-state', function () {
 	return auth()->check() ? 1 : 0;
 });
@@ -20,10 +21,13 @@ Route::get('/', function () {
 	return view('index');
 });
 
-Route::resource('categories', 'CategoryController');
-Route::resource('posts', 'PostController');
-Route::resource('projects', 'ProjectController');
-Route::resource('tags', 'TagController');
+Route::group(['middleware' => 'ajax'], function ()
+{
+	Route::resource('categories', 'CategoryController');
+	Route::resource('posts', 'PostController');
+	Route::resource('projects', 'ProjectController');
+	Route::resource('tags', 'TagController');
+});
 
 Route::get('{page}', 'ErrorController@error404')
 	->where('page', '(.*)');

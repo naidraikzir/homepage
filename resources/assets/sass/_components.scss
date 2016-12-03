@@ -1,19 +1,19 @@
 
 .loading {
 	align-items: center;
-	display: flex;
+	display: inline-flex;
 	height: 100%;
 	justify-content: center;
 	width: 100%;
 
-	> div {
-		animation: 1.6s linear infinite loading;
-		background-color: black;
+	> span {
+		animation: 1s linear infinite loading;
+		background-color: white;
 		border-radius: 0.5em;
 		height: 1em;
 	}
 
-	.dashboard & > div {
+	.dashboard & > span {
 		background-color: white;	
 	}
 }

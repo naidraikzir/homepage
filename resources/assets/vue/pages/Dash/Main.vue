@@ -1,5 +1,7 @@
 <template lang="pug">
 section
+	.pad.h100
+		loading
 	article
 		h1 Heading H1
 		h1
@@ -47,9 +49,11 @@ section
 			|  sit amet. Etiam consectetur tincidunt purus sit amet blandit. Aliquam et sagittis justo.
 
 		pre
-			| function() {
-			|   return 'Hell Yeah Holy Molly Bowly Uy Uy'
-			| }
+			code function() {
+			br
+			code   return 'Hell Yeah Holy Molly Bowly Uy Uy'
+			br
+			code }
 
 		p
 			button Button
@@ -123,12 +127,14 @@ section
 				input#range(type="range")
 				
 	figure
-		img(src="../../images/giphy.gif")
+		img(src="../../../images/giphy.gif")
 		figcaption AhohaoiahoaoY
 </template>
 
 <script>
-export default {
+import Loading from 'vue/components/Loading'
 
+export default {
+	components: { Loading }
 }
 </script>

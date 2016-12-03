@@ -1,8 +1,10 @@
 <template lang="pug">
-article
-	h1 Ooops
-	h2 Page Not Found	
-	router-link(:to="{ name: 'home' }") Back
+article.right-align
+	h1.hlg Ooops...
+	h1.hxxl
+		mark 404
+	h2 Looks like I can't always give what you want
+	router-link(:to="{ name: 'home', exact: true }") Check back the other ones
 </template>
 
 <script>
