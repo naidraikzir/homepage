@@ -5,10 +5,13 @@ import makeTitle from './makeTitle'
 
 Vue.use(Router)
 
-import Home from 'vue/pages/Home'
-import Posts from 'vue/pages/Posts'
-import Projects from 'vue/pages/Projects'
 import Login from 'vue/pages/Login'
+
+import Home from 'vue/pages/Home'
+import Landing from 'vue/pages/Home/Landing'
+import Posts from 'vue/pages/Home/Posts'
+import Projects from 'vue/pages/Home/Projects'
+
 import Dashboard from 'vue/pages/Dash/Dashboard'
 import DashMain from 'vue/pages/Dash/Main'
 import DashPosts from 'vue/pages/Dash/Posts'
@@ -18,15 +21,22 @@ import DashPostEdit from 'vue/pages/Dash/PostEdit'
 import DashProjects from 'vue/pages/Dash/Projects'
 import DashCategories from 'vue/pages/Dash/Categories'
 import DashTags from 'vue/pages/Dash/Tags'
+
 import NotFound from 'vue/pages/NotFound'
 
 const router = new Router({
 	linkActiveClass: '-active',
 	mode: 'history',
 	routes: [
-		{ path: '/', name: 'home', component: Home },
-		{ path: '/posts', name: 'posts', component: Posts },
-		{ path: '/projects', name: 'projects', component: Projects },
+		{
+			path: '/',
+			component: Home,
+			children: [
+				{ path: '', name: 'landing', component: Landing },
+				{ path: 'posts', name: 'posts', component: Posts },
+				{ path: 'projects', name: 'projects', component: Projects },
+			]
+		},
 		{ path: '/login', name: 'login', component: Login },
 		{
 			path: '/dashboard',
@@ -38,13 +48,11 @@ const router = new Router({
 				{ path: 'main', name: 'dash main', component: DashMain, meta: { text: 'Dashboard' } },
 				{
 					path: 'posts',
-					name: 'dash posts',
 					component: DashPosts,
-					redirect: { name: 'post list' },
 					children: [
-						{ path: '', name: 'post list', component: DashPostList, meta: { text: 'Posts' } },
+						{ path: '', name: 'dash posts', component: DashPostList, meta: { text: 'Posts' } },
 						{ path: 'write', name: 'write post', component: DashPostWrite, meta: { text: 'Write' } },
-						{ path: 'edit', name: 'edit post', component: DashPostEdit }
+						{ path: ':id/edit', name: 'edit post', component: DashPostEdit, meta: { text: 'Edit' } }
 					]
 				},
 				{ path: 'projects', name: 'dash projects', component: DashProjects, meta: { text: 'Projects' } },
@@ -59,7 +67,7 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
 	if (to.matched.some(route => route.meta.requiresAuth) && !store.getters.isAuthenticated) 
-		next({ name: 'home' })
+		next({ name: 'landing' })
 	else
 		next()
 })

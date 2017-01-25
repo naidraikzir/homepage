@@ -44,7 +44,8 @@ class PostController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		//
+		$request->merge([ 'status' => 2 ]);
+		if (Post::create($request->except(['id']))) return 'Post Published';
 	}
 
 	/**
@@ -66,7 +67,7 @@ class PostController extends Controller
 	 */
 	public function edit($id)
 	{
-		//
+		return Post::find($id);
 	}
 
 	/**
@@ -78,7 +79,7 @@ class PostController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
-		//
+		if (Post::find($id)->update($request->all())) return 'Post Updated';
 	}
 
 	/**

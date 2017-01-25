@@ -6,9 +6,9 @@
 
 @section('js')
 	@if (env('APP_ENV') == 'local')
-		<script src="http://localhost:8080/js/manifest.js"></script>
-		<script src="http://localhost:8080/js/vendor.js"></script>
-		<script src="http://localhost:8080/js/app.js"></script>
+		<script src="http://localhost:8088/js/manifest.js"></script>
+		<script src="http://localhost:8088/js/vendor.js"></script>
+		<script src="http://localhost:8088/js/app.js"></script>
 	@elseif (env('APP_ENV') == 'production')
 		<script src="{{ asset('js/manifest.js') }}"></script>
 		<script src="{{ asset('js/vendor.js') }}"></script>

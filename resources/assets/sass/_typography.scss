@@ -1,10 +1,10 @@
 
 html {
-	font: normal 400 16px/1.5 $sans;
+	font: normal 400 14px/1.5 $sans;
 	-webkit-font-smoothing: antialiased;
 
 	@include breakpoint('md') {
-		font-size: 18px;
+		font-size: 16px;
 	}
 }
 
@@ -38,7 +38,6 @@ code {
 }
 
 input:not([type=checkbox]):not([type=radio]),
-textarea,
 select,
 button {
 	font: {
@@ -46,6 +45,14 @@ button {
 		size: 0.95em;
 	}
 	line-height: 1;
+}
+
+textarea {
+	font: {
+		family: $mono;
+		size: 0.95em;
+	}
+	line-height: 1.5;
 }
 
 button {

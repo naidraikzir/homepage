@@ -9,6 +9,7 @@ import App from 'vue/App'
 require('./http')
 
 // directives
+require('./directives/autoResize')
 require('./directives/hammer')
 
 // styles
@@ -19,5 +20,3 @@ new Vue({
 	store,
 	render: h => h(App)
 }).$mount('#app')
-
-require('./general')

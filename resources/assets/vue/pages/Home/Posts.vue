@@ -2,6 +2,8 @@
 section
 	.pad.h100
 		loading
+	.pad.h100
+		loading(type="circle")
 	article
 		h1 Heading H1
 		h1
@@ -125,7 +127,7 @@ section
 				input#range(type="range")
 				
 	figure
-		img(src="../../images/plane.jpg")
+		img(src="../../../images/plane.jpg")
 		figcaption Flyyyy!!
 </template>
 
