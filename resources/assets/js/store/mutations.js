@@ -8,7 +8,4 @@ export default {
 	TOGGLE_MENU (state, value) {
 		state.menu = value
 	},
-	TOGGLE_LOADING (state, value) {
-		state.loading = value
-	},
 }

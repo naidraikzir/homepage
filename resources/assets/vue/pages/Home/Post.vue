@@ -6,46 +6,37 @@ div
 	transition(name="fade")
 		article.vh100.flex.items-center(v-if="loading")
 			loading
-	transition-group(
-		name="stagger",
-		tag="article",
-		@before-enter="before",
+	transition(
+		@before-enter="titleBefore",
 		@enter="enter",
-		@leave="leave")
-		.mb3(
-			v-for="(post, index) in posts",
-			:key="post",
-			:data-index="index")
-			div(v-if="index > 0") ———
-			router-link(:to="{ name: 'post', params: { id: post.id } }")
-				h2 {{ post.title }}
-					br
-					small: small: em {{ format(post.created_at, 'MMMM, Do YYYY') }}
-	article
-		pagination(:pagination="pagination")
+		@leave="titleLeave")
+		article(v-if="post")
+			h1.center {{ post.title }}
+			h4.center: em {{ format(post.created_at, 'MMMM, Do YYYY') }}
+	transition(
+		@before-enter="contentBefore",
+		@enter="enter",
+		@leave="contentLeave")
+		article(v-if="post")
+			mark-view(:content="post.content")
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import anime from 'animejs'
 import format from 'date-fns/format'
 import loading from 'js/mixins/loading'
 import Logo from 'vue/components/Logo'
+import MarkView from 'vue/components/MarkView'
 import Menus from 'vue/partials/Menu'
-import Pagination from 'vue/components/Pagination'
 
 export default {
-	name: 'Posts',
+	name: 'Post',
 	mixins: [ loading ],
-	components: { Logo, Menus, Pagination },
+	components: { Logo, MarkView, Menus },
 
 	data () {
 		return {
-			posts: [],
-			pagination: {
-				current_page: 6,
-				last_page: 9
-			}
+			post: null
 		}
 	},
 
@@ -58,7 +49,7 @@ export default {
 	},
 
 	beforeRouteLeave (to, from, next) {
-		this.posts = []
+		this.post = null
 
 		setTimeout(() => {
 			next()
@@ -68,33 +59,45 @@ export default {
 	methods: {
 		fetch () {
 			return new Promise(resolve => {
-				this.$http.get('/posts').then(response => {
-					for (let i = 0; i < 10; i++) this.posts.push(response.data[0])
+				this.$http.get(`/posts/${this.$route.params.id}`).then(response => {
+					this.post = response.data
 					resolve()
 				}, error => console.log(error.data))
 			})
 		},
-		before (el) {
+		titleBefore (el) {
 			el.style.opacity = 0
-			el.style.transform = 'translateX(-20em)'
+			el.style.transform = 'translateY(-20em)'
+		},
+		contentBefore (el) {
+			el.style.opacity = 0
+			el.style.transform = 'translateY(20em)'
 		},
 		enter (el, done) {
 			anime({
 				targets: el,
 				opacity: 1,
-				translateX: 0,
-				duration: 1000,
-				delay: (el.dataset.index + 1) * 10,
+				translateY: 0,
+				duration: 2000,
+				delay: 500,
 				complete: done
 			}).play()
 		},
-		leave (el, done) {
+		titleLeave (el, done) {
 			anime({
 				targets: el,
 				opacity: 0,
-				translateX: '1em',
-				duration: 1000,
-				delay: (el.dataset.index + 1) * 10,
+				translateY: '-10em',
+				duration: 2000,
+				complete: done
+			}).play()
+		},
+		contentLeave (el, done) {
+			anime({
+				targets: el,
+				opacity: 0,
+				translateY: '10em',
+				duration: 2000,
 				complete: done
 			}).play()
 		},

@@ -10,6 +10,7 @@ import Login from 'vue/pages/Login'
 import Home from 'vue/pages/Home'
 import Landing from 'vue/pages/Home/Landing'
 import Posts from 'vue/pages/Home/Posts'
+import Post from 'vue/pages/Home/Post'
 import Projects from 'vue/pages/Home/Projects'
 
 import Dashboard from 'vue/pages/Dash/Dashboard'
@@ -21,6 +22,7 @@ import DashPostEdit from 'vue/pages/Dash/PostEdit'
 import DashProjects from 'vue/pages/Dash/Projects'
 import DashCategories from 'vue/pages/Dash/Categories'
 import DashTags from 'vue/pages/Dash/Tags'
+import DashMedia from 'vue/pages/Dash/Media'
 
 import NotFound from 'vue/pages/NotFound'
 
@@ -34,6 +36,7 @@ const router = new Router({
 			children: [
 				{ path: '', name: 'landing', component: Landing },
 				{ path: 'posts', name: 'posts', component: Posts },
+				{ path: 'posts/:id', name: 'post', component: Post },
 				{ path: 'projects', name: 'projects', component: Projects },
 			]
 		},
@@ -58,6 +61,7 @@ const router = new Router({
 				{ path: 'projects', name: 'dash projects', component: DashProjects, meta: { text: 'Projects' } },
 				{ path: 'categories', name: 'dash categories', component: DashCategories, meta: { text: 'Categories' } },
 				{ path: 'tags', name: 'dash tags', component: DashTags, meta: { text: 'Tags' } },
+				{ path: 'medias', name: 'dash medias', component: DashMedia, meta: { text: 'Medias' } },
 			]
 		},
 		{ path: '/404', name: '404', component: NotFound },

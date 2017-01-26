@@ -37,18 +37,17 @@ p {
 }
 
 blockquote {
-	margin: 2em 0 2em 0.6em;
+	margin: 2em 0;
+	padding-left: 2.5em;
+	position: relative;
 	transition: 0.2s ease;
-	&:hover {
-		transform: translateX(0.6em);
-	}
 	&::before {
-		content: "[";
+		content: "❝";
+		left: -0.05em;
 		margin-right: 0.6em;
-	}
-	&::after {
-		content: "]";
-		margin-left: 0.6em;
+		opacity: 0.5;
+		position: absolute;
+		top: -0.5em;
 	}
 }
 
@@ -69,6 +68,7 @@ table {
 	border-spacing: 0;
 	margin: 1.4em 0;
 	max-width: 100%;
+	width: 100%;
 	@include breakpoint("md") {
 		display: table;
 	}
@@ -312,7 +312,6 @@ button {
 	background-color: white;
 	color: black;
 	border: none;
-	margin-right: 0.8em;
 	min-width: 7em;
 	padding: 0.6em 1em 0.5em;
 	position: relative;
@@ -328,7 +327,7 @@ button {
 	}
 
 	& + & {
-		margin-top: 0.8em;
+		margin-left: 0.8em;
 	}
 }
 
@@ -351,6 +350,9 @@ td {
 img {
 	max-width: 100%;
 	width: 100%;
+	p & {
+		width: initial;
+	}
 }
 
 mark {

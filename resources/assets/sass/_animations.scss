@@ -1,3 +1,4 @@
+
 @keyframes loading-slide {
 	0% { opacity: 0; transform: scale(0) translateX(-3em); width: 1em; }
 	10% { opacity: 0.1; transform: scale(0.1) translateX(-1.75em); width: 1em; }
@@ -12,4 +13,9 @@
 	0% { border-width: 1em; height: 0; opacity: 0; width: 0; }
 	50% { border-width: 1em; height: 0; opacity: 1; width: 0; }
 	100% { border-width: 0em; height: 2em; opacity: 0; width: 2em; }
+}
+
+@keyframes spin {
+	from { transform: rotateY(0deg); }
+	to { transform: rotateY(360deg); }
 }

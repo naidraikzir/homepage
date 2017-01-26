@@ -1,5 +1,5 @@
 <template lang="pug">
-section
+div
 	.pad.h100
 		loading
 	article

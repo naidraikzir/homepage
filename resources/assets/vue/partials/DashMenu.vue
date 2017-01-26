@@ -17,6 +17,7 @@ export default {
 				{ name: 'dash projects', text: 'Projects' },
 				{ name: 'dash categories', text: 'Categories' },
 				{ name: 'dash tags', text: 'Tags' },
+				{ name: 'dash medias', text: 'Media' },
 			]
 		}
 	}

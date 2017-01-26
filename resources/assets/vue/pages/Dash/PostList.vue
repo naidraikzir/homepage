@@ -1,5 +1,5 @@
 <template lang="pug">
-section.p2
+.p2
 	router-link(:to="{ name: 'write post' }", tag="button") Write Post
 
 	.h2.mt2 Posts

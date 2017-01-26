@@ -4,8 +4,6 @@ span.loading
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
 	name: 'Loading',
 
@@ -14,10 +12,6 @@ export default {
 			type: String,
 			default: 'slide'
 		}
-	},
-
-	computed: {
-		...mapGetters(['loading'])
 	}
 }
 </script>

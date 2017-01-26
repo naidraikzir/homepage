@@ -17,7 +17,7 @@ export default {
 	components: { DashMenu, DashNav },
 
 	computed: {
-		...mapGetters(['menu', 'loading'])
+		...mapGetters(['menu'])
 	},
 
 	methods: {

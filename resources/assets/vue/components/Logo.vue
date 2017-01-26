@@ -1,11 +1,11 @@
 <template lang="pug">
-div
-	article
-		.h2 Projects
+.logo
+	div
+	div
 </template>
 
 <script>
 export default {
-
+	name: 'Logo'
 }
 </script>

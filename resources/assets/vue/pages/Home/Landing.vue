@@ -8,6 +8,10 @@
 	overflow: hidden;
 	position: relative;
 
+	&.mounted::before {
+		transform: skewY(25deg) scaleX(1);
+	}
+
 	&::before {
 		position: absolute;
 		left: 1.5em;
@@ -16,8 +20,13 @@
 		bottom: 1em;
 		border: solid white;
 		border-width: 0 1px;
-		transform: skewY(25deg);
+		transform: skewY(25deg) scaleX(1.25);
+		transition: 0.75s ease-in;
 		content: '';
+
+		.mounted & {
+			transition: 0.75s ease-out;
+		}
 
 		@include breakpoint('sm') {
 			left: 2em;
@@ -34,7 +43,11 @@ a {
 	font-size: 1.2em;
 	padding: 0 1em;
 	position: absolute;
-	transition: 0.3s;
+	transition: 0.75s ease-in;
+
+	.mounted & {
+		transition: 0.75s ease-out;
+	}
 
 	&:hover::after {
 		background: white;
@@ -64,8 +77,12 @@ a {
 .posts {
 	top: 65%;
 	left: 1.3em;
-	transform: rotate(90deg) translateX(-50%);
+	transform: rotate(90deg) translateX(-50%) translateY(400%);
 	transform-origin: left;
+
+	.mounted & {
+		transform: rotate(90deg) translateX(-50%) translateY(0);
+	}
 
 	@include breakpoint('sm') {
 		left: 1.7em;
@@ -75,8 +92,12 @@ a {
 .projects {
 	bottom: 67%;
 	right: -4.5em;
-	transform: rotate(-90deg) translateX(-50%);
+	transform: rotate(-90deg) translateX(-50%) translateY(400%);
 	transform-origin: left;
+
+	.mounted & {
+		transform: rotate(-90deg) translateX(-50%) translateY(50%);
+	}
 
 	@include breakpoint('sm') {
 		right: -4.2em;
@@ -92,16 +113,23 @@ a {
 	padding: 1.5em 2em;
 	z-index: -1;
 	font-family: $mono;
+	transform: translateY(-200%);
+	transition: 0.75s ease-in;
 	z-index: 1;
+
+	.mounted & {
+		transform: translateY(0);
+		transition: 0.75s ease-out;
+	}
 }
 </style>
 
 <template lang="pug">
-.wrapper
-	router-link.posts(:to="{ name: 'posts' }") Posts
-	router-link.projects(:to="{ name: 'projects' }") Projects
+.wrapper(:class="{ 'mounted': mounted }")
+	a.posts(@click="go('posts')", ref="posts") Posts
+	a.projects(@click="go('projects')", ref="projects") Projects
 
-	.greet
+	.greet(ref="greet")
 		h1 Hell Oh 👽
 		h3
 			| My name is Rizki Ardian
@@ -111,6 +139,27 @@ a {
 
 <script>
 export default {
-	name: 'Landing'
+	name: 'Landing',
+
+	data () {
+		return {
+			mounted: false
+		}
+	},
+
+	mounted () {
+		setTimeout(() => {
+			this.mounted = true
+		}, 1000)
+	},
+
+	methods: {
+		go (to) {
+			this.mounted = false
+			setTimeout(() => {
+				this.$router.push({ name: to })
+			}, 1500)
+		}
+	}
 }
 </script>

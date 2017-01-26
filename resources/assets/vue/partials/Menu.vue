@@ -19,3 +19,12 @@ export default {
 	}
 }
 </script>
+
+<style lang="sass" scoped>
+.item {
+	border: 0;
+	& + & {
+		margin-left: 1em;
+	}
+}
+</style>

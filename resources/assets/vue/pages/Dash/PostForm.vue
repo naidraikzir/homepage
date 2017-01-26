@@ -43,7 +43,7 @@ export default {
 			categories: [],
 			temp: {
 				id: null,
-				category_id: 0,
+				category_id: 1,
 				title: '',
 				content: ''
 			}

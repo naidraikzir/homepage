@@ -1,5 +1,5 @@
 <template lang="pug">
-section
+div
 	article
 		.h2 Categories
 </template>
