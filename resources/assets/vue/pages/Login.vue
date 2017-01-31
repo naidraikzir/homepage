@@ -1,11 +1,11 @@
 <template lang="pug">
-article
+article.flex.flex-column.items-stretch.justify-center.vh100
 	form(@submit.prevent="login")
 		fieldset
 			input(type="email", v-model="email")
 		fieldset
 			input(type="password", v-model="password")
-		fieldset
+		fieldset.right-align
 			button(type="submit") Login
 </template>
 

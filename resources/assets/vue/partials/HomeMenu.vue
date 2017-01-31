@@ -1,3 +1,12 @@
+<style lang="sass" scoped>
+.item {
+	border: 0;
+	& + & {
+		margin-left: 1em;
+	}
+}
+</style>
+
 <template lang="pug">
 .menu
 	router-link.item(
@@ -7,7 +16,7 @@
 
 <script>
 export default {
-	name: 'Menu',
+	name: 'HomeMenu',
 
 	data () {
 		return {
@@ -19,12 +28,3 @@ export default {
 	}
 }
 </script>
-
-<style lang="sass" scoped>
-.item {
-	border: 0;
-	& + & {
-		margin-left: 1em;
-	}
-}
-</style>

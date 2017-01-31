@@ -1,8 +1,6 @@
 <template lang="pug">
 div
-	.flex.justify-between.p2
-		router-link.border-none(:to="{ name: 'landing' }"): logo
-		menus
+	home-header(:show="post !== null")
 	transition(name="fade")
 		article.vh100.flex.items-center(v-if="loading")
 			loading
@@ -11,8 +9,8 @@ div
 		@enter="enter",
 		@leave="titleLeave")
 		article(v-if="post")
-			h1.center {{ post.title }}
-			h4.center: em {{ format(post.created_at, 'MMMM, Do YYYY') }}
+			h2.center {{ post.title }}
+			h5.center: em {{ format(post.created_at, 'MMMM, Do YYYY') }}
 	transition(
 		@before-enter="contentBefore",
 		@enter="enter",
@@ -27,12 +25,12 @@ import format from 'date-fns/format'
 import loading from 'js/mixins/loading'
 import Logo from 'vue/components/Logo'
 import MarkView from 'vue/components/MarkView'
-import Menus from 'vue/partials/Menu'
+import HomeHeader from 'vue/partials/HomeHeader'
 
 export default {
 	name: 'Post',
 	mixins: [ loading ],
-	components: { Logo, MarkView, Menus },
+	components: { Logo, MarkView, HomeHeader },
 
 	data () {
 		return {

@@ -4,7 +4,7 @@
 	.dash-main(@click="toggleDashMenu(false)")
 		dash-menu
 		transition(name="to-right", mode="out-in")
-			router-view
+			router-view.p2
 </template>
 
 <script>

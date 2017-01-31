@@ -10,6 +10,7 @@ require('./http')
 
 // directives
 require('./directives/autoResize')
+require('./directives/clickaway')
 require('./directives/hammer')
 
 // styles

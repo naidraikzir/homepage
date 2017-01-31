@@ -96,7 +96,7 @@ a {
 	transform-origin: left;
 
 	.mounted & {
-		transform: rotate(-90deg) translateX(-50%) translateY(50%);
+		transform: rotate(-90deg) translateX(-50%);
 	}
 
 	@include breakpoint('sm') {
@@ -112,7 +112,6 @@ a {
 	bottom: 1.5em;
 	padding: 1.5em 2em;
 	z-index: -1;
-	font-family: $mono;
 	transform: translateY(-200%);
 	transition: 0.75s ease-in;
 	z-index: 1;
@@ -130,11 +129,14 @@ a {
 	a.projects(@click="go('projects')", ref="projects") Projects
 
 	.greet(ref="greet")
-		h1 Hell Oh 👽
-		h3
+		h1
+			| Hey H
+			small 👽
+		h5
 			| My name is Rizki Ardian
 			br
 			| I am a web developer
+			
 </template>
 
 <script>

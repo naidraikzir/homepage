@@ -59,6 +59,10 @@
 		color: rgba(255, 255, 255, 0.75);
 		font-style: italic;
 	}
+
+	[type=range]::-webkit-slider-thumb {
+		box-shadow: inset 0 0 0 3px white;
+	}
 }
 
 .dash-nav {
@@ -181,7 +185,6 @@
 }
 
 .post-form {
-
 	article {
 		vertical-align: top;
 

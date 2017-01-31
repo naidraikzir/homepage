@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->tinyInteger('status');
+            $table->string('slug');
             $table->integer('category_id')->unsigned();
             $table->timestamps();
             

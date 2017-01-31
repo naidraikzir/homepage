@@ -1,6 +1,6 @@
 
 html {
-	font: normal 400 14px/1.5 $mono;
+	font: normal 400 14px/1.5 $sans;
 	-webkit-font-smoothing: antialiased;
 
 	@include breakpoint('md') {
@@ -9,21 +9,27 @@ html {
 }
 
 h1, h2, h3 {
+	font-family: $serif;
+}
+
+h1 { font-size: 4em; }
+h2 { font-size: 2.5em; }
+h3 { font-size: 2em; }
+h4 { font-size: 1.5em; }
+h5 { font-size: 1.25em; }
+h6 { font-size: 1em; }
+
+h4, h5, h6 {
 	font-weight: normal;
 }
 
-h4, h5, h6 {
-	font-weight: bold;
-}
-
-h6 {
-	font-size: 0.7em;
-}
-
 blockquote {
-	font-family: $mono;
+	font: {
+		family: $serif;
+		size: 1.3em;
+	}
 	&::before {
-		font-size: 5em;
+		font-size: 2em;
 	}
 }
 
@@ -38,18 +44,10 @@ p {
 input:not([type=checkbox]):not([type=radio]),
 select,
 button {
-	font: {
-		family: $sans;
-		size: 0.95em;
-	}
 	line-height: 1;
 }
 
 textarea {
-	font: {
-		family: $mono;
-		size: 0.95em;
-	}
 	line-height: 1.5;
 }
 

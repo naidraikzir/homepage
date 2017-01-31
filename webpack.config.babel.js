@@ -31,7 +31,7 @@ const CONFIG = {
 					name: 'images/[name].[ext]?[hash]'
 				}
 			},
-			{ test: /\.(eot|svg|ttf|woff|woff2)$/, loader: 'file-loader?name=fonts/[name].[ext]' }
+			{ test: /\.(eot|otf|svg|ttf|woff|woff2)$/, loader: 'file-loader?name=fonts/[name].[ext]' }
 		]
 	},
 	resolve: {

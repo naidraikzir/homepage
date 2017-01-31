@@ -44,7 +44,13 @@ class PostController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		$request->merge([ 'status' => 2 ]);
+		$slug = Post::where('slug', 'like', '%'.str_slug($request->title).'%')->count() > 0 ?
+			str_slug($request->title . ' ' . DB::table('posts')->max('id') + 1) :
+			str_slug($request->title);
+		$request->merge([
+			'status' => 2,
+			'slug' => $slug
+		]);
 		if (Post::create($request->except(['id']))) return 'Post Published';
 	}
 

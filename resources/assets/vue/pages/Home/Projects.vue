@@ -1,16 +1,34 @@
 <template lang="pug">
 div
-	.flex.justify-between.p2
-		router-link.border-none(:to="{ name: 'landing' }"): logo
-		menus
+	home-header(:show="show")
 </template>
 
 <script>
 import Logo from 'vue/components/Logo'
-import Menus from 'vue/partials/Menu'
+import HomeHeader from 'vue/partials/HomeHeader'
 
 export default {
 	name: 'Projects',
-	components: { Logo, Menus }
+	components: { Logo, HomeHeader },
+
+	data () {
+		return {
+			show: false
+		}
+	},
+
+	mounted () {
+		setTimeout(() => {
+			this.show = true
+		}, 1000)
+	},
+
+	beforeRouteLeave (to, from, next) {
+		this.show = false
+
+		setTimeout(() => {
+			next()
+		}, 1000)
+	},
 }
 </script>

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     protected $table = 'posts';
-    protected $fillable = ['title', 'content', 'status', 'category_id'];
+    protected $fillable = ['title', 'content', 'status', 'slug', 'category_id'];
 
 
 	// Mutators

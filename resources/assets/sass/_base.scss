@@ -38,7 +38,7 @@ p {
 
 blockquote {
 	margin: 2em 0;
-	padding-left: 2.5em;
+	padding-left: 1.5em;
 	position: relative;
 	transition: 0.2s ease;
 	&::before {
@@ -215,13 +215,13 @@ input[type=range] {
 	&::-webkit-slider-thumb {
 		box-shadow: inset 0 0 0 3px black;
 		border: 2px solid white;
-		height: 20px;
-		width: 20px;
-		border-radius: 10px;
+		height: 16px;
+		width: 16px;
+		border-radius: 8px;
 		background: white;
 		cursor: pointer;
 		-webkit-appearance: none;
-		margin-top: -8px;
+		margin-top: -6px;
 	}
 
 	&:focus::-webkit-slider-runnable-track {

@@ -1,8 +1,6 @@
 <template lang="pug">
-.p2
+div
 	router-link(:to="{ name: 'write post' }", tag="button") Write Post
-
-	.h2.mt2 Posts
 
 	ul
 		li(v-for="post in posts")

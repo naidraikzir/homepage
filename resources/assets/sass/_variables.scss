@@ -5,8 +5,9 @@ $breakpoints: (
 	'lg': 64em
 );
 
+$serif: 'Playfair Display', 'Times New Roman', serif;
 $sans: 'Rubik', 'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif;
-$mono: 'Roboto Mono', 'Droid Mono', 'Menlo', monospace;
+$mono: 'Inconsolata', 'Roboto Mono', 'Droid Mono', 'Menlo', monospace;
 
 $darkgrey: #333;
 $lightgrey: #eee;

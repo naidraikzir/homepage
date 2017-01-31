@@ -1,26 +1,23 @@
 <template lang="pug">
 div
-	.flex.justify-between.p2
-		router-link.border-none(:to="{ name: 'landing' }"): logo
-		menus
+	home-header(:show="posts.length > 0")
 	transition(name="fade")
 		article.vh100.flex.items-center(v-if="loading")
 			loading
 	transition-group(
 		name="stagger",
 		tag="article",
-		@before-enter="before",
-		@enter="enter",
-		@leave="leave")
-		.mb3(
+		@before-enter="postsBefore",
+		@enter="postsEnter",
+		@leave="postsLeave")
+		div(
 			v-for="(post, index) in posts",
 			:key="post",
 			:data-index="index")
-			div(v-if="index > 0") ———
+			.my2(v-if="index > 0") ———
 			router-link(:to="{ name: 'post', params: { id: post.id } }")
-				h2 {{ post.title }}
-					br
-					small: small: em {{ format(post.created_at, 'MMMM, Do YYYY') }}
+				h3.m0 {{ post.title }}
+				h6.m0: em {{ format(post.created_at, 'MMMM, Do YYYY') }}
 	article
 		pagination(:pagination="pagination")
 </template>
@@ -30,14 +27,13 @@ import { mapGetters } from 'vuex'
 import anime from 'animejs'
 import format from 'date-fns/format'
 import loading from 'js/mixins/loading'
-import Logo from 'vue/components/Logo'
-import Menus from 'vue/partials/Menu'
 import Pagination from 'vue/components/Pagination'
+import HomeHeader from 'vue/partials/HomeHeader'
 
 export default {
 	name: 'Posts',
 	mixins: [ loading ],
-	components: { Logo, Menus, Pagination },
+	components: { HomeHeader, Pagination },
 
 	data () {
 		return {
@@ -74,11 +70,11 @@ export default {
 				}, error => console.log(error.data))
 			})
 		},
-		before (el) {
+		postsBefore (el) {
 			el.style.opacity = 0
 			el.style.transform = 'translateX(-20em)'
 		},
-		enter (el, done) {
+		postsEnter (el, done) {
 			anime({
 				targets: el,
 				opacity: 1,
@@ -88,7 +84,7 @@ export default {
 				complete: done
 			}).play()
 		},
-		leave (el, done) {
+		postsLeave (el, done) {
 			anime({
 				targets: el,
 				opacity: 0,
