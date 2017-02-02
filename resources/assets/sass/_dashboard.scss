@@ -4,10 +4,6 @@
 	background-image: radial-gradient(circle at top center, $pink 0%, $purple 100%);
 	background-attachment: fixed;
 
-	a {
-		color: white;
-	}
-
 	pre,
 	code {
 		background-color: black;
@@ -28,14 +24,14 @@
 	}
 
 	button {
-		background-color: #46ff6e;
+		background-color: $green;
 
 		&:hover::before {
-			box-shadow: 0 0em 0.75em 0 rgba(#46ff6e, 0.75);
+			box-shadow: 0 0em 0.75em 0 rgba($green, 0.75);
 		}
 
 		&::before {
-			box-shadow: 0 0.2em 1.5em 0 rgba(#46ff6e, 0.5);
+			box-shadow: 0 0.2em 1.5em 0 rgba($green, 0.5);
 			content: '';
 			height: 80%;
 			left: 5%;

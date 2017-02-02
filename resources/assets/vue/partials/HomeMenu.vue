@@ -1,6 +1,16 @@
 <style lang="sass" scoped>
+@import '../../sass/variables';
+
 .item {
 	border: 0;
+	color: white;
+	transition: 0.5s;
+	
+	&.-active,
+	&:hover {
+		color: $green;
+	}
+
 	& + & {
 		margin-left: 1em;
 	}
@@ -21,7 +31,7 @@ export default {
 	data () {
 		return {
 			menus: [
-				{ name: 'posts', text: 'Posts' },
+				{ name: 'thoughts', text: 'Thoughts' },
 				{ name: 'projects', text: 'Projects' },
 			]
 		}

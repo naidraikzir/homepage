@@ -21,14 +21,11 @@ Route::get('/', function () {
 	return view('index');
 });
 
-Route::group(['middleware' => 'ajax'], function ()
-{
-	Route::resource('categories', 'CategoryController');
-	Route::resource('posts', 'PostController');
-	Route::resource('projects', 'ProjectController');
-	Route::resource('tags', 'TagController');
-	Route::resource('medias', 'MediaController');
-});
+Route::resource('categories', 'CategoryController');
+Route::resource('posts', 'PostController');
+Route::resource('projects', 'ProjectController');
+Route::resource('tags', 'TagController');
+Route::resource('medias', 'MediaController');
 
 Route::get('{page}', 'ErrorController@error404')
 	->where('page', '(.*)');

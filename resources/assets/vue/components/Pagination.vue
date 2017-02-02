@@ -1,3 +1,7 @@
+<style lang="sass" scoped>
+a { color: white; }
+</style>
+
 <template lang="pug">
 .flex.justify-between.items-center
 	a.h1.pb1.border-none(

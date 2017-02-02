@@ -10,7 +10,7 @@ div
 		@leave="titleLeave")
 		article(v-if="post")
 			h2.center {{ post.title }}
-			h5.center: em {{ format(post.created_at, 'MMMM, Do YYYY') }}
+			.center: em {{ format(post.created_at, 'MMMM, Do YYYY') }}
 	transition(
 		@before-enter="contentBefore",
 		@enter="enter",
@@ -28,7 +28,7 @@ import MarkView from 'vue/components/MarkView'
 import HomeHeader from 'vue/partials/HomeHeader'
 
 export default {
-	name: 'Post',
+	name: 'Thought',
 	mixins: [ loading ],
 	components: { Logo, MarkView, HomeHeader },
 

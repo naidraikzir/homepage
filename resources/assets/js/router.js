@@ -9,8 +9,8 @@ import Login from 'vue/pages/Login'
 
 import Home from 'vue/pages/Home'
 import Landing from 'vue/pages/Home/Landing'
-import Posts from 'vue/pages/Home/Posts'
-import Post from 'vue/pages/Home/Post'
+import Thoughts from 'vue/pages/Home/Thoughts'
+import Thought from 'vue/pages/Home/Thought'
 import Projects from 'vue/pages/Home/Projects'
 
 import Dashboard from 'vue/pages/Dash/Dashboard'
@@ -35,8 +35,8 @@ const router = new Router({
 			component: Home,
 			children: [
 				{ path: '', name: 'landing', component: Landing },
-				{ path: 'posts', name: 'posts', component: Posts },
-				{ path: 'posts/:id', name: 'post', component: Post },
+				{ path: 'thoughts', name: 'thoughts', component: Thoughts },
+				{ path: 'thoughts/:id', name: 'thought', component: Thought },
 				{ path: 'projects', name: 'projects', component: Projects },
 			]
 		},

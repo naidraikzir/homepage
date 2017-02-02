@@ -15,9 +15,9 @@ div
 			:key="post",
 			:data-index="index")
 			.my2(v-if="index > 0") ———
-			router-link(:to="{ name: 'post', params: { id: post.id } }")
+			router-link(:to="{ name: 'thought', params: { id: post.id } }")
 				h3.m0 {{ post.title }}
-				h6.m0: em {{ format(post.created_at, 'MMMM, Do YYYY') }}
+			em {{ format(post.created_at, 'MMMM, Do YYYY') }}
 	article
 		pagination(:pagination="pagination")
 </template>
@@ -31,7 +31,7 @@ import Pagination from 'vue/components/Pagination'
 import HomeHeader from 'vue/partials/HomeHeader'
 
 export default {
-	name: 'Posts',
+	name: 'Thoughts',
 	mixins: [ loading ],
 	components: { HomeHeader, Pagination },
 

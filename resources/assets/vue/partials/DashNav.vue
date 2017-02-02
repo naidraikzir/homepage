@@ -1,3 +1,7 @@
+<style lang="sass" scoped>
+a { color: white; }
+</style>
+
 <template lang="pug">
 .dash-nav(:class="{ 'pulled-up': dashMenu, 'hidden': hide }", v-touch:swipeup="pullUp")
 	nav
