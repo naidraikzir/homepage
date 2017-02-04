@@ -77,8 +77,10 @@ router.beforeEach((to, from, next) => {
 })
 
 router.afterEach(to => {
-	if (to.matched.some(route => route.name === 'dashboard')) store.dispatch('toggleDashMenu', false)
-	makeTitle(to.name, 'Rizki Ardian')
+	if (to.matched.some(route => route.name === 'dashboard')) {
+		store.dispatch('toggleDashMenu', false)
+		makeTitle(to.name, 'Rizki Ardian')
+	}
 })
 
 export default router

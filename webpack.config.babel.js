@@ -42,6 +42,7 @@ const CONFIG = {
 		COMMONS_CHUNK
 	],
 	devServer: {
+		port: 8088,
 		historyApiFallback: true
 	}
 }

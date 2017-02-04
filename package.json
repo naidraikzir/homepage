@@ -2,7 +2,7 @@
   "name": "naidraikzir-homepage",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --config webpack.config.babel.js --hot --port=8088",
+    "dev": "webpack-dev-server --config webpack.config.babel.js --hot",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.babel.js --progress --hide-modules"
   },
   "dependencies": {

@@ -3,7 +3,7 @@ a { color: white; }
 </style>
 
 <template lang="pug">
-.flex.justify-between.items-center
+.flex.justify-between.items-center(v-if="pagination.last_page > 1")
 	a.h1.pb1.border-none(
 		@click="to(-1)",
 		:class="{ 'invisible': isFirstPage }") ←

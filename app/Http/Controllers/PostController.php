@@ -44,14 +44,12 @@ class PostController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		$slug = Post::where('slug', 'like', '%'.str_slug($request->title).'%')->count() > 0 ?
-			str_slug($request->title . ' ' . DB::table('posts')->max('id') + 1) :
-			str_slug($request->title);
 		$request->merge([
 			'status' => 2,
-			'slug' => $slug
+			'slug' => $this->makeSlug($request->title)
 		]);
-		if (Post::create($request->except(['id']))) return 'Post Published';
+		Post::create($request->except(['id']));
+		return 'Post Published';
 	}
 
 	/**
@@ -85,7 +83,9 @@ class PostController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
-		if (Post::find($id)->update($request->all())) return 'Post Updated';
+		$request->merge([ 'slug' => $this->makeSlug($request->title) ]);
+		Post::find($id)->update($request->all());
+		return 'Post Updated';
 	}
 
 	/**
@@ -96,6 +96,20 @@ class PostController extends Controller
 	 */
 	public function destroy($id)
 	{
-		//
+		Post::find($id)->delete();
+		return 'Post deleted';
+	}
+
+	/**
+	 * Generate slug from title
+	 * 
+	 * @param  string $title
+	 * @return string $slug
+	 */
+	protected function makeSlug($title)
+	{
+		return Post::where('slug', 'like', '%'.str_slug($title).'%')->count() > 0 ?
+			str_slug($title . ' ' . DB::table('posts')->max('id') + 1) :
+			str_slug($title);
 	}
 }

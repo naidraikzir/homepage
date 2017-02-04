@@ -155,8 +155,10 @@ textarea,
 select,
 button {
 	appearance: none;
+	border-radius: 2px;
 	box-sizing: border-box;
 	outline: 0;
+	padding: 0 0.65em;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-moz-appearance: none;
@@ -166,7 +168,7 @@ button {
 input:not([type=checkbox]):not([type=radio]):not([type=range]),
 select,
 button {
-	min-height: 2.4rem;
+	height: 36px;
 }
 
 input:not([type=range]),
@@ -175,7 +177,6 @@ select {
 	border: 2px solid white;
 	min-width: 100%;
 	max-width: 100%;
-	padding: 0.65em;
 }
 
 input[type=checkbox],
@@ -297,9 +298,8 @@ select {
 	background-image: linear-gradient(45deg, transparent 50%, black 50%),
 										linear-gradient(135deg, black 50%, transparent 50%);
 	background-size: 5px 5px;
-	background-position: calc(100% - 15px) 1em, calc(100% - 10px) 1em;
+	background-position: calc(100% - 15px) 14px, calc(100% - 10px) 14px;
 	background-repeat: no-repeat;
-	border-radius: 0;
 	cursor: pointer;
 }
 
@@ -309,17 +309,21 @@ select:-moz-focusring {
 }
 
 button {
-	background-color: white;
+	background-color: $green;
 	color: black;
-	border: none;
-	min-width: 7em;
-	padding: 0.6em 1em 0.5em;
+	border: 0;
+	margin-bottom: 1em;
+	min-width: 5em;
 	position: relative;
 	user-select: none;
 	transition: 0.2s;
 
 	&:hover {
 		transform: translateY(0.1em);
+
+		&::before {
+			box-shadow: 0 0 10px 0 rgba($green, 0.5);
+		}
 	}
 
 	&:active {
@@ -328,6 +332,18 @@ button {
 
 	& + & {
 		margin-left: 0.8em;
+	}
+
+	&::before {
+		box-shadow: 0 2px 30px 0 rgba($green, 0.5);
+		content: '';
+		height: 80%;
+		left: 2%;
+		position: absolute;
+		top: 20%;
+		transition: 0.2s;
+		width: 96%;
+		z-index: -1;
 	}
 }
 

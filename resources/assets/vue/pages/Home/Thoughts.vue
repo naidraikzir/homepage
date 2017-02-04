@@ -39,8 +39,8 @@ export default {
 		return {
 			posts: [],
 			pagination: {
-				current_page: 6,
-				last_page: 9
+				current_page: 2,
+				last_page: 3
 			}
 		}
 	},

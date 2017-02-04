@@ -1,5 +1,5 @@
 <template lang="pug">
-div
+.p2
 	router-link(:to="{ name: 'write post' }", tag="button") Write Post
 
 	ul

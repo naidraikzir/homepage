@@ -23,26 +23,6 @@
 											linear-gradient(135deg, white 50%, transparent 50%);
 	}
 
-	button {
-		background-color: $green;
-
-		&:hover::before {
-			box-shadow: 0 0em 0.75em 0 rgba($green, 0.75);
-		}
-
-		&::before {
-			box-shadow: 0 0.2em 1.5em 0 rgba($green, 0.5);
-			content: '';
-			height: 80%;
-			left: 5%;
-			position: absolute;
-			top: 20%;
-			transition: 0.2s;
-			width: 90%;
-			z-index: -1;
-		}
-	}
-
 	tr {
 		border-top-color: white;
 	}
@@ -177,16 +157,5 @@
 		margin-left: 180px;
 		padding-bottom: 0;
 		padding-top: 50px;
-	}
-}
-
-.post-form {
-	article {
-		vertical-align: top;
-
-		@include breakpoint('lg') {
-			display: inline-block;
-			width: 50%;
-		}
 	}
 }

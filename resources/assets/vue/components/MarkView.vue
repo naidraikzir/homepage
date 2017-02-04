@@ -16,7 +16,11 @@ export default {
 	},
 
 	computed: {
-		parsed () { return marked(this.content, { breaks: true }) }
+		parsed () {
+			return marked(this.content, {
+				breaks: true
+			})
+		}
 	}
 }
 </script>

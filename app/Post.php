@@ -11,15 +11,15 @@ class Post extends Model
 
 
 	// Mutators
-	public function setContentAttribute($value)
-	{
-		$this->attributes['content'] = htmlspecialchars($value, ENT_QUOTES);
-	}
+	// public function setContentAttribute($value)
+	// {
+	// 	$this->attributes['content'] = htmlspecialchars($value, ENT_QUOTES);
+	// }
 
 
 	// Accessors
-	public function getContentAttribute($value)
-	{
-		return htmlspecialchars_decode($value, ENT_QUOTES);
-	}
+	// public function getContentAttribute($value)
+	// {
+	// 	return htmlspecialchars_decode($value, ENT_QUOTES);
+	// }
 }

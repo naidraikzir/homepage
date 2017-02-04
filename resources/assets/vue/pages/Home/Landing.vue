@@ -37,39 +37,48 @@
 	}
 }
 
-a {
+.link {
 	background: black;
 	border: 0;
 	color: white;
 	font-size: 1.2em;
 	padding: 0 1em;
+	transition: 0.3s;
 
 	&:hover {
-		color: $green;
-
+		&::before {
+			opacity: 0;
+			transform: translateY(0) scaleY(0);
+		}
 		&::after {
-			background: $green;
-			top: -0.3em;
-			height: 1px;
-
-			@include breakpoint('md') {
-				top: -0.5em;
-			}
+			transform: translateY(0);
 		}
 	}
 
-	&::after {
-		position: absolute;
-		top: 300%;
-		left: 0;
-		height: 1000%;
-		width: 100%;
-		background: black;
+	&::before {
 		content: '';
+		position: absolute;
+		top: -200%;
+		left: 0;
+		width: 100%;
+		height: 300%;
+		background: $green;
+		transform: translateY(300%) scaleY(1);
 		transition:
-			0.5s top,
-			0.5s 0.25s background,
-			0.5s height;
+			0.5s transform,
+			0.3s 0.2s opacity;
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		top: 0.7em;
+		left: 5%;
+		width: 90%;
+		height: 1px;
+		background: $green;
+		transform: translateY(5em);
+		transition: 0.5s;
 	}
 }
 
@@ -82,7 +91,7 @@ a {
 	transition: 0.75s ease-in;
 	z-index: 2;
 
-	> a {
+	> .link {
 		position: relative;
 	}
 
@@ -98,7 +107,7 @@ a {
 .projects {
 	bottom: 67%;
 	position: absolute;
-	right: -4.5em;
+	right: -4.55em;
 	transform: rotate(-90deg) translateX(-50%) translateY(400%);
 	transform-origin: left;
 	transition: 0.75s ease-in;
@@ -120,7 +129,7 @@ a {
 	right: 10%;
 	top: 1.5em;
 	bottom: 1.5em;
-	padding: 1.5em 0;
+	padding-bottom: 1.5em;
 	z-index: -1;
 	transform: translateY(-200%);
 	transition: 0.75s ease-in;
@@ -135,23 +144,57 @@ a {
 		padding-left: -3.8em;
 	}
 }
+
+.contact {
+	margin-top: 2em;
+
+	@include breakpoint('md') {
+		display: flex;
+	}
+
+	> div {
+		margin: 0 4em 2em 0;
+		padding-top: 2em;
+		position: relative;
+
+		@include breakpoint('md') {
+			display: inline-block;
+		}
+
+		&::before {
+			content: '——';
+			position: absolute;
+			top: 0;
+		}
+	}
+}
 </style>
 
 <template lang="pug">
 .wrapper(:class="{ 'mounted': mounted }")
 	.bottom
-		a(@click="go('thoughts')") Thoughts
-		a(@click="") Resume
-	a.projects(@click="go('projects')", ref="projects") Projects
+		a.link(@click="go('thoughts')") Thoughts
+		a.link(@click="") Resume
+	a.link.projects(@click="go('projects')", ref="projects") Projects
 
 	.greet(ref="greet")
 		h1
-			| Hey H
-			small 👽
-		.h3
+			| Hey Ho
+		p
 			| My name is Rizki Ardian
 			br
 			| I am a web developer
+		.contact
+			div
+				| Jalan Logam III, Margacinta
+				br
+				| Buahbatu, Bandung
+				br
+				| Indonesia
+			div
+				a(href="mailto:rizkiardian@rocketmail.com") rizkiardian[at]rocketmail.com
+				br
+				a(href="tel:+6285974002493") +62-8597-400-2493
 </template>
 
 <script>
