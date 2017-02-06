@@ -3,6 +3,11 @@
 	'../../../sass/variables',
 	'../../../sass/mixins';
 
+a {
+	border: 0;
+	color: white;
+}
+
 .wrapper {
 	height: 100vh;
 	overflow: hidden;
@@ -129,6 +134,7 @@
 	right: 10%;
 	top: 1.5em;
 	bottom: 1.5em;
+	overflow-y: auto;
 	padding-bottom: 1.5em;
 	z-index: -1;
 	transform: translateY(-200%);
@@ -146,26 +152,11 @@
 }
 
 .contact {
-	margin-top: 2em;
-
-	@include breakpoint('md') {
-		display: flex;
-	}
+	margin-top: 6em;
 
 	> div {
-		margin: 0 4em 2em 0;
-		padding-top: 2em;
+		margin-bottom: 2em;
 		position: relative;
-
-		@include breakpoint('md') {
-			display: inline-block;
-		}
-
-		&::before {
-			content: '——';
-			position: absolute;
-			top: 0;
-		}
 	}
 }
 </style>
@@ -173,9 +164,9 @@
 <template lang="pug">
 .wrapper(:class="{ 'mounted': mounted }")
 	.bottom
-		a.link(@click="go('thoughts')") Thoughts
+		router-link.link(:to="{ name: 'thoughts' }") Thoughts
 		a.link(@click="") Resume
-	a.link.projects(@click="go('projects')", ref="projects") Projects
+	router-link.link.projects(:to="{ name: 'projects' }") Projects
 
 	.greet(ref="greet")
 		h1
@@ -192,9 +183,9 @@
 				br
 				| Indonesia
 			div
-				a(href="mailto:rizkiardian@rocketmail.com") rizkiardian[at]rocketmail.com
+				a(href="tel:+6285974002493") P — 628 597 4002 493
 				br
-				a(href="tel:+6285974002493") +62-8597-400-2493
+				a(href="mailto:rizkiardian@rocketmail.com") E — rizkiardian@rocketmail.com
 </template>
 
 <script>
@@ -213,13 +204,11 @@ export default {
 		}, 1000)
 	},
 
-	methods: {
-		go (to) {
-			this.mounted = false
-			setTimeout(() => {
-				this.$router.push({ name: to })
-			}, 1500)
-		}
-	}
+	beforeRouteLeave (to, from, next) {
+		this.mounted = false
+		setTimeout(() => {
+			next()
+		}, 1500)
+	},
 }
 </script>
