@@ -7,19 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     protected $table = 'posts';
-    protected $fillable = ['title', 'content', 'status', 'slug', 'category_id'];
-
-
-	// Mutators
-	// public function setContentAttribute($value)
-	// {
-	// 	$this->attributes['content'] = htmlspecialchars($value, ENT_QUOTES);
-	// }
-
-
-	// Accessors
-	// public function getContentAttribute($value)
-	// {
-	// 	return htmlspecialchars_decode($value, ENT_QUOTES);
-	// }
+    protected $fillable = [
+    	'title', 'excerpt', 'content', 'featured_image', 'status', 'slug', 'category_id'
+    ];
 }

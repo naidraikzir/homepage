@@ -183,9 +183,9 @@ a {
 				br
 				| Indonesia
 			div
-				a(href="tel:+6285974002493") P — 628 597 4002 493
+				a(:href="phoneLink") P — {{ phone }}
 				br
-				a(href="mailto:rizkiardian@rocketmail.com") E — rizkiardian@rocketmail.com
+				a(:href="emailLink") E — {{ email }}
 </template>
 
 <script>
@@ -194,8 +194,15 @@ export default {
 
 	data () {
 		return {
-			mounted: false
+			mounted: false,
+			phone: '628 597 400 2493',
+			email: 'rizkiardian@rocketmail.com'
 		}
+	},
+
+	computed: {
+		phoneLink () { return `tel:${this.phone.split(' ').join('')}` },
+		emailLink () { return `mailto:${this.email}` },
 	},
 
 	mounted () {

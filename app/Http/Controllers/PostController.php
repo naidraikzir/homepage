@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Post;
+use DB;
 
 class PostController extends Controller
 {
@@ -109,7 +110,7 @@ class PostController extends Controller
 	protected function makeSlug($title)
 	{
 		return Post::where('slug', 'like', '%'.str_slug($title).'%')->count() > 0 ?
-			str_slug($title . ' ' . DB::table('posts')->max('id') + 1) :
+			str_slug($title . ' ' . strval(DB::table('posts')->max('id') + 1)) :
 			str_slug($title);
 	}
 }

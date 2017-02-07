@@ -2,7 +2,7 @@
 div
 	.pad.h100
 		loading
-	article.px0
+	article
 		h1 Heading H1
 		h1
 			mark Heading H1 marked and long

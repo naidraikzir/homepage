@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-	home-header(:show="posts.length > 0")
+	home-header(:show="header")
 	transition(name="fade")
 		article.vh100.flex.items-center(v-if="loading")
 			loading
@@ -37,6 +37,7 @@ export default {
 
 	data () {
 		return {
+			header: false,
 			posts: [],
 			pagination: {
 				current_page: 2,
@@ -46,14 +47,19 @@ export default {
 	},
 
 	mounted () {
+		this.header = true
 		this.loading = true
-		this.fetch()
-			.then(() => {
-				this.loading = false
-			})
+		
+		setTimeout(() => {
+			this.fetch()
+				.then(() => {
+					this.loading = false
+				})
+		}, 1500)
 	},
 
 	beforeRouteLeave (to, from, next) {
+		this.header = false
 		this.posts = []
 
 		setTimeout(() => {
@@ -67,7 +73,10 @@ export default {
 				this.$http.get('/posts').then(response => {
 					for (let i = 0; i < 10; i++) this.posts.push(response.data[0])
 					resolve()
-				}, error => console.log(error.data))
+				}, error => {
+					console.log(error.data)
+					resolve()
+				})
 			})
 		},
 		postsBefore (el) {

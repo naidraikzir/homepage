@@ -15,6 +15,7 @@ class PostSeeder extends Seeder
     {
     	Post::create([
     		'title' => 'Markdown',
+        'excerpt' => 'A simple demo of markdown elements.',
     		'content' => '## Headings
 
 # H1
@@ -40,38 +41,36 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 
 1. First ordered list item
 2. Another item
-⋅⋅* Unordered sub-list. 
-1. Actual numbers don&#039;t matter, just that it&#039;s a number
-⋅⋅1. Ordered sub-list
+  * Unordered sub-list. 
+1. Actual numbers don\'t matter, just that it\'s a number
+  1. Ordered sub-list
 4. And another item.
+  You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we\'ll use three here to also align the raw Markdown).
 
-⋅⋅⋅You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we&#039;ll use three here to also align the raw Markdown).
-
-⋅⋅⋅To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅
-⋅⋅⋅Note that this line is separate, but within the same paragraph.⋅⋅
-⋅⋅⋅(This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
+To have a line break without a paragraph, you will need to use two trailing spaces.
+Note that this line is separate, but within the same paragraph. (This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
 
 * Unordered list can use asterisks
 - Or minuses
 + Or pluses
 
 ---
-Links
+## Links
 
-[I&#039;m an inline-style link](https://www.google.com)
+[I\'m an inline-style link](https://www.google.com)
 
-[I&#039;m an inline-style link with title](https://www.google.com &quot;Google&#039;s Homepage&quot;)
+[I\'m an inline-style link with title](https://www.google.com \'Google\'s Homepage\')
 
-[I&#039;m a reference-style link][Arbitrary case-insensitive reference text]
+[I\'m a reference-style link][Arbitrary case-insensitive reference text]
 
-[I&#039;m a relative reference to a repository file](../blob/master/LICENSE)
+[I\'m a relative reference to a repository file](../blob/master/LICENSE)
 
 [You can use numbers for reference-style link definitions][1]
 
 Or leave it empty and use the [link text itself].
 
 URLs and URLs in angle brackets will automatically get turned into links. 
-http://www.example.com or &lt;http://www.example.com&gt; and sometimes 
+http://www.example.com or <http://www.example.com> and sometimes 
 example.com (but not on Github, for example).
 
 Some text to show that the reference links can follow later.
@@ -83,15 +82,15 @@ Some text to show that the reference links can follow later.
 ---
 ## Images
 
-Here&#039;s our logo (hover to see the title text):
+Here\'s our logo (hover to see the title text):
 
 Inline-style: 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png &quot;Logo Title Text 1&quot;)
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png \'Logo Title Text 1\')
 
 Reference-style: 
 ![alt text][logo]
 
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png &quot;Logo Title Text 2&quot;
+[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png \'Logo Title Text 2\'
 
 ---
 ## Code
@@ -99,18 +98,18 @@ Reference-style:
 Inline `code` has `back-ticks around` it.
 
 ```javascript
-var s = &quot;JavaScript syntax highlighting&quot;;
+var s = \'JavaScript syntax highlightin\'
 alert(s);
 ```
  
 ```python
-s = &quot;Python syntax highlighting&quot;
+s = \'Python syntax highlighting\'
 print s
 ```
  
 ```
 No language indicated, so no syntax highlighting. 
-But let&#039;s throw in a &lt;b&gt;tag&lt;/b&gt;.
+But let\'s throw in a <b>tag</b>.
 ```
 
 ---
@@ -125,7 +124,7 @@ Colons can be used to align columns.
 | zebra stripes | are neat      |    $1 |
 
 There must be at least 3 dashes separating each header cell.
-The outer pipes (|) are optional, and you don&#039;t need to make the 
+The outer pipes (|) are optional, and you don\'t need to make the 
 raw Markdown line up prettily. You can also use inline Markdown.
 
 Markdown | Less | Pretty
@@ -136,23 +135,23 @@ Markdown | Less | Pretty
 ---
 ## Blockquotes
 
-&gt; Blockquotes are very handy in email to emulate reply text.
-&gt; This line is part of the same quote.
+> Blockquotes are very handy in email to emulate reply text.
+> This line is part of the same quote.
 
 Quote break.
 
-&gt; This is a very long line that will still be quoted properly when it wraps. Oh boy let&#039;s keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote.
+> This is a very long line that will still be quoted properly when it wraps. Oh boy let\'s keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote.
 
 ---
 ## Inline Html
 
-&lt;dl&gt;
-  &lt;dt&gt;Definition list&lt;/dt&gt;
-  &lt;dd&gt;Is something people use sometimes.&lt;/dd&gt;
+<dl>
+  <dt>Definition list</dt>
+  <dd>Is something people use sometimes.</dd>
 
-  &lt;dt&gt;Markdown in HTML&lt;/dt&gt;
-  &lt;dd&gt;Does *not* work **very** well. Use HTML &lt;em&gt;tags&lt;/em&gt;.&lt;/dd&gt;
-&lt;/dl&gt;
+  <dt>Markdown in HTML</dt>
+  <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
+</dl>
 
 ---
 ## Horizontal Rule
@@ -170,8 +169,8 @@ Asterisks
 ___
 
 Underscores',
-			'status' => 2,
-			'category_id' => 1
+  			'status' => 2,
+  			'category_id' => 1
     	]);
     }
 }

@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-	home-header(:show="show")
+	home-header(:show="header")
 </template>
 
 <script>
@@ -13,18 +13,16 @@ export default {
 
 	data () {
 		return {
-			show: false
+			header: false
 		}
 	},
 
 	mounted () {
-		setTimeout(() => {
-			this.show = true
-		}, 1000)
+		this.header = true
 	},
 
 	beforeRouteLeave (to, from, next) {
-		this.show = false
+		this.header = false
 
 		setTimeout(() => {
 			next()
